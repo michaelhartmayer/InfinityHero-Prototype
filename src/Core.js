@@ -52,4 +52,8 @@ export default class Core {
 	formatNumber (n) {
 		return this.$.Numbers().format(n);
 	}
+
+	Mediator () {
+		return this.$.Mediator();
+	}
 }

@@ -3,10 +3,10 @@ require('normalize.css');
 import Core from './Core';
 
 // libraries
-import Cookie 	from 'cookies-js';
-import Mediator from 'mediator-js';
-import Timer    from 'timer.js';
-import Numeral  from 'numeral';
+import Cookie 	 from 'cookies-js';
+import Mediator  from 'mediator-js';
+import Timer     from 'timer.js';
+import Numeral   from 'numeral';
 
 class TimerFacade {
 	constructor ({ tick, onTick, onStart, onStop, onPause, onEnd }) {

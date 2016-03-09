@@ -10,19 +10,46 @@ import HeaderContainer  from './components/HeaderContainer';
 import GameContainer 	from './components/GameContainer';
 
 // services
-import Save 			from './services/Save';
-import Tick				from './services/Tick';
+import Save 			 from './services/Save';
+import Tick				 from './services/Tick';
+import KeyboardShortcuts from './services/KeyboardShortcuts';
+
+let _mediator;
+const initSandboxMediator = sandbox => {
+	_mediator = sandbox.$.Mediator();
+}
+
+const initServices = sandbox => {
+	new Save(sandbox);
+	new Tick(sandbox);
+	new KeyboardShortcuts(sandbox);
+}
+
+const initSaveGame = (sandbox) => {
+	var gameState = sandbox.load('gameState') || {};
+	
+	if (gameState.state) {
+		sandbox.getStore().dispatch(loadGame(gameState));
+	}
+};
+
+const initView = (sandbox) => {
+	ReactDOM.render(
+		<Provider store={sandbox.getStore()}>
+			<GameContainer sandbox={sandbox} />
+		</Provider>,
+		sandbox.getDOMRenderTarget()
+	);
+};
 
 class Sandbox {
 	constructor (core) {
 		this.$ = core;
-		
-		loadSavedGame(this);
-		render(this);
 
-		// services
-		new Save(this);
-		new Tick(this);
+		initSandboxMediator(this);
+		initServices(this);
+		initSaveGame(this);
+		initView(this);
 	}
 
 	getStore () {
@@ -44,23 +71,14 @@ class Sandbox {
 	getDOMRenderTarget () {
 		return this.$.getDOMRenderTarget();
 	}
-}
 
-const loadSavedGame = (sandbox) => {
-	var gameState = sandbox.load('gameState') || {};
-	
-	if (gameState.state) {
-		sandbox.getStore().dispatch(loadGame(gameState));
+	subscribe (channel, fn = () => {}) {
+		_mediator.subscribe(channel, fn);
 	}
-};
 
-const render = (sandbox) => {
-	ReactDOM.render(
-		<Provider store={sandbox.getStore()}>
-			<GameContainer sandbox={sandbox} />
-		</Provider>,
-		sandbox.getDOMRenderTarget()
-	);
-};
+	publish (channel, payload = {}) {
+		_mediator.publish(channel, payload);
+	} 
+}
 
 export default Sandbox;
