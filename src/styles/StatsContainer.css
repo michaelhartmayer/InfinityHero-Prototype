@@ -1,0 +1,21 @@
+.ui-stats {
+	padding: 10px;
+	border: 1px solid black;
+	width: 200px;
+	border-radius: 5px;
+}
+
+.ui-stat-box {
+
+}
+
+.ui-stat-box .ui-stat-name {
+	font-weight: bold;
+	display: inline-block;
+	width: 50px;
+	padding: 3px;
+}
+
+.ui-stat-box .ui-stat-value {
+
+}

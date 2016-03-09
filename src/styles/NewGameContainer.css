@@ -1,0 +1,19 @@
+.ui-new-game {
+	position: absolute;
+	width: 300px;
+	max-height: 200px;
+	padding: 5px;
+	box-sizing: border-box;
+	margin: 20px;
+	border: 1px solid #aeaeae;
+	text-align: center;
+}
+
+.ui-new-game input {
+	padding: 9px;
+	font-size: 0.8em;
+}
+
+.ui-new-game p {
+	padding: 10px;
+}

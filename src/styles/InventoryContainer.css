@@ -1,0 +1,23 @@
+.ui-inventory {
+	background: #333;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 4px;
+	width: 200px;
+	text-align: center;
+}
+
+.ui-inventory-label {
+	color: #ddd;
+	font-size: 0.8em;
+	margin: 5px;
+}
+
+.ui-inventory-slot {
+	border: 1px solid #444;
+	background: #222;
+	width: 36px;
+	height: 36px;
+	display: inline-block;
+	margin: 1px;
+}

@@ -1,0 +1,7 @@
+{
+  "generator-react-webpack": {
+    "appName": "infinityHero",
+    "style": "css",
+    "postcss": false
+  }
+}
